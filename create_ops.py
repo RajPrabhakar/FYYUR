@@ -29,9 +29,12 @@ def create_venue_submission():
 
   try:
     venue = Venue()
-    form.populate_obj(venue)
-    db.session.add(venue)
-    db.session.commit()
+    if form.validate():
+      form.populate_obj(venue)
+      db.session.add(venue)
+      db.session.commit()
+    else:
+      error=True
   except:
     error = True
     db.session.rollback()
@@ -65,9 +68,12 @@ def create_artist_submission():
 
   try:
     artist = Artist()
-    form.populate_obj(artist)
-    db.session.add(artist)
-    db.session.commit()
+    if form.validate():
+      form.populate_obj(artist)
+      db.session.add(artist)
+      db.session.commit()
+    else:
+      error = True
   except:
     error = True
     db.session.rollback()
@@ -99,9 +105,12 @@ def create_show_submission():
 
   try:
     show = Show()
-    form.populate_obj(show)
-    db.session.add(show)
-    db.session.commit()
+    if form.validate():
+      form.populate_obj(show)
+      db.session.add(show)
+      db.session.commit()
+    else:
+      error = True
   except:
     error = True
     db.session.rollback()
