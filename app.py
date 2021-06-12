@@ -36,11 +36,21 @@ app.jinja_env.filters['datetime'] = format_datetime
 
 @app.route('/')
 def index():
-  return render_template('pages/home.html')
+  venues = Venue.query.order_by(Venue.name).limit(10).all()
+  artists = Artist.query.order_by(Artist.name).limit(10).all()
+  return render_template('pages/home.html', venues=venues, artists=artists)
+
+@app.errorhandler(403)
+def forbidden_error(error):
+    return render_template('errors/403.html'), 403
 
 @app.errorhandler(404)
 def not_found_error(error):
     return render_template('errors/404.html'), 404
+
+@app.errorhandler(409)
+def duplicate_resource_error(error):
+    return render_template('errors/409.html'), 409
 
 @app.errorhandler(500)
 def server_error(error):

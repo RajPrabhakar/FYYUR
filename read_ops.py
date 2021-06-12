@@ -9,8 +9,6 @@ from flask import render_template, request
 
 @app.route('/venues')
 def venues():
-  # TODO: replace with real venues data.
-  #       num_shows should be aggregated based on number of upcoming shows per venue.
   data = []
   cities = Venue.query.with_entities(Venue.city, Venue.state).group_by(Venue.city, Venue.state).all()
 
@@ -33,7 +31,6 @@ def venues():
 
 @app.route('/venues/search', methods=['POST'])
 def search_venues():
-  # TODO: implement search on artists with partial string search. Ensure it is case-insensitive.
   # seach for Hop should return "The Musical Hop".
   # search for "Music" should return "The Musical Hop" and "Park Square Live Music & Coffee"
   search_term = request.form.get('search_term', '')
@@ -55,7 +52,6 @@ def search_venues():
 @app.route('/venues/<int:venue_id>')
 def show_venue(venue_id):
   # shows the venue page with the given venue_id
-  # TODO: replace with real venue data from the venues table, using venue_id
   venue = Venue.query.get(venue_id)
   shows = Show.query.join(Artist).filter(Show.venue_id==venue_id).all()
   past_shows = []
@@ -96,7 +92,6 @@ def show_venue(venue_id):
 
 @app.route('/artists')
 def artists():
-  # TODO: replace with real data returned from querying the database
   data = []
   artists = Artist.query.all()
   for artist in artists:
@@ -108,7 +103,6 @@ def artists():
 
 @app.route('/artists/search', methods=['POST'])
 def search_artists():
-  # TODO: implement search on artists with partial string search. Ensure it is case-insensitive.
   # seach for "A" should return "Guns N Petals", "Matt Quevado", and "The Wild Sax Band".
   # search for "band" should return "The Wild Sax Band".
   search_term = request.form.get('search_term', '')
@@ -130,7 +124,6 @@ def search_artists():
 @app.route('/artists/<int:artist_id>')
 def show_artist(artist_id):
   # shows the artist page with the given artist_id
-  # TODO: replace with real artist data from the artist table, using artist_id
   artist = Artist.query.get(artist_id)
   shows = Show.query.join(Venue).filter(Show.artist_id==artist_id).all()
   past_shows = []
@@ -171,8 +164,6 @@ def show_artist(artist_id):
 @app.route('/shows')
 def shows():
   # displays list of shows at /shows
-  # TODO: replace with real venues data.
-  #       num_shows should be aggregated based on number of upcoming shows per venue.
   data = []
   shows = Show.query.join(Artist).join(Venue).all()
   for show in shows:

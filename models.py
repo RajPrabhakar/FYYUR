@@ -8,8 +8,6 @@ moment = Moment(app)
 app.config.from_object('config')
 db = SQLAlchemy(app)
 
-# TODO: connect to a local postgresql database
-
 migrate = Migrate(app, db)
 
 #----------------------------------------------------------------------------#
@@ -54,8 +52,6 @@ class Artist(db.Model):
 
   def __repr__(self):
     return f'<Artist {self.id} : {self.name}>'
-
-# TODO Implement Show and Artist models, and complete all model relationships and properties, as a database migration.
 
 class Show(db.Model):
   __tablename__ = 'show'
