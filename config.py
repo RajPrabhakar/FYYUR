@@ -12,4 +12,4 @@ SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
 # TODO IMPLEMENT DATABASE URL
-SQLALCHEMY_DATABASE_URI = 'postgresql://wjszegaakgtnak:db90efe1108441db48d177ab98df9ae679a6fb88e1ac6182e54aa1d4b36fc249@ec2-3-233-7-12.compute-1.amazonaws.com:5432/d721tgln18l8u1'
+SQLALCHEMY_DATABASE_URI = 'postgres://wjszegaakgtnak:db90efe1108441db48d177ab98df9ae679a6fb88e1ac6182e54aa1d4b36fc249@ec2-3-233-7-12.compute-1.amazonaws.com:5432/d721tgln18l8u1'
